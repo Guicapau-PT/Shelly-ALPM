@@ -44,5 +44,89 @@ namespace Shelly_UI.Assets {
                 resourceCulture = value;
             }
         }
+        
+        internal static string ActionReinstalling {
+            get {
+                return ResourceManager.GetString("ActionReinstalling", resourceCulture);
+            }
+        }
+        
+        internal static string ActionInstalling {
+            get {
+                return ResourceManager.GetString("ActionInstalling", resourceCulture);
+            }
+        }
+        
+        internal static string ActionDownloading {
+            get {
+                return ResourceManager.GetString("ActionDownloading", resourceCulture);
+            }
+        }
+        
+        internal static string ActionCheckingConflicts {
+            get {
+                return ResourceManager.GetString("ActionCheckingConflicts", resourceCulture);
+            }
+        }
+        
+        internal static string AccentHexColor {
+            get {
+                return ResourceManager.GetString("AccentHexColor", resourceCulture);
+            }
+        }
+        
+        internal static string ActionRemoving {
+            get {
+                return ResourceManager.GetString("ActionRemoving", resourceCulture);
+            }
+        }
+        
+        internal static string ActionRunningHooks {
+            get {
+                return ResourceManager.GetString("ActionRunningHooks", resourceCulture);
+            }
+        }
+        
+        internal static string ActionUpdating {
+            get {
+                return ResourceManager.GetString("ActionUpdating", resourceCulture);
+            }
+        }
+        
+        internal static string AlpmUpdatePromptDialog {
+            get {
+                return ResourceManager.GetString("AlpmUpdatePromptDialog", resourceCulture);
+            }
+        }
+        
+        internal static string Appearance {
+            get {
+                return ResourceManager.GetString("Appearance", resourceCulture);
+            }
+        }
+        
+        internal static string ApplyAccent {
+            get {
+                return ResourceManager.GetString("ApplyAccent", resourceCulture);
+            }
+        }
+        
+        internal static string AppSettings {
+            get {
+                return ResourceManager.GetString("AppSettings", resourceCulture);
+            }
+        }
+        
+        internal static string AppTitle {
+            get {
+                return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        internal static string ArchNews {
+            get {
+                return ResourceManager.GetString("ArchNews", resourceCulture);
+            }
+        }
     }
 }

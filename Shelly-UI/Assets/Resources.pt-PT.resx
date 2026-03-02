@@ -18,4 +18,46 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="ActionReinstalling" xml:space="preserve">
+        <value>A Reinstalar </value>
+    </data>
+    <data name="ActionInstalling" xml:space="preserve">
+        <value>A Instalar</value>
+    </data>
+    <data name="ActionDownloading" xml:space="preserve">
+        <value>A Transferir </value>
+    </data>
+    <data name="ActionCheckingConflicts" xml:space="preserve">
+        <value>A buscar Conflitos</value>
+    </data>
+    <data name="AccentHexColor" xml:space="preserve">
+        <value>Cor de Destaque (Hex) por Padrão</value>
+    </data>
+    <data name="ActionRemoving" xml:space="preserve">
+        <value>A Remover</value>
+    </data>
+    <data name="ActionRunningHooks" xml:space="preserve">
+        <value>A rodar os Hooks</value>
+    </data>
+    <data name="ActionUpdating" xml:space="preserve">
+        <value>A atualizar</value>
+    </data>
+    <data name="AlpmUpdatePromptDialog" xml:space="preserve">
+        <value>Alguns dos pacotes não foramselecionados. Uma atualizaçãocompleta do sistema é semprerecomendada</value>
+    </data>
+    <data name="Appearance" xml:space="preserve">
+        <value>Aparência</value>
+    </data>
+    <data name="ApplyAccent" xml:space="preserve">
+        <value>Aplicar a Cor de Destaque Customizada</value>
+    </data>
+    <data name="AppSettings" xml:space="preserve">
+        <value>Aplicar as Configurações</value>
+    </data>
+    <data name="AppTitle" xml:space="preserve">
+        <value>Shelly</value>
+    </data>
+    <data name="ArchNews" xml:space="preserve">
+        <value>Notícias do Arch</value>
+    </data>
 </root>
