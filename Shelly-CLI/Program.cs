@@ -66,7 +66,7 @@ public class Program
         }
 
         var app = new CommandApp();
-        app.SetDefaultCommand<UpgradeCommand>();
+        app.SetDefaultCommand<Commands.DefaultCommand>();
         app.Configure(config =>
         {
             config.SetApplicationName("shelly");
