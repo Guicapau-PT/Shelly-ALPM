@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkWindow" id="SettingWindow">
+    <property name="title">Settings</property>
+    <property name="default-width">500</property>
+    <property name="default-height">400</property>
+    <child>
+      <object class="GtkListBox" id="settings_list">
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+      </object>
+    </child>
+  </object>
+</interface>

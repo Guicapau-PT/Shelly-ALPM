@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkWindow" id="FlatpakInstallWindow">
+    <property name="title">Install Flatpak</property>
+    <property name="default-width">600</property>
+    <property name="default-height">400</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkSearchEntry" id="flatpak_search">
+            <property name="placeholder-text">Search Flatpaks...</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkListView" id="flatpak_list"/>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

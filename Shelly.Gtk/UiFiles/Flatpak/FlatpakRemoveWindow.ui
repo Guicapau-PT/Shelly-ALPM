@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkWindow" id="FlatpakRemoveWindow">
+    <property name="title">Remove Flatpak</property>
+    <property name="modal">true</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="spacing">15</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Select Flatpaks to remove:</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="vexpand">true</property>
+            <property name="min-content-height">200</property>
+            <child>
+              <object class="GtkListView" id="installed_flatpaks"/>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="remove_button">
+            <property name="label">Remove Selected</property>
+            <property name="halign">end</property>
+            <style>
+              <class name="destructive-action"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

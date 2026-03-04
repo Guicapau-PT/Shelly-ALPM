@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkWindow" id="UpdateAurWindow">
+    <property name="title">Update AUR Package</property>
+    <property name="modal">true</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Checking for AUR updates...</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkProgressBar" id="progress_bar">
+            <property name="show-text">true</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

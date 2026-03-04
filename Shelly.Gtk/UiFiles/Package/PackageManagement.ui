@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="PackageManagement">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkBox" id="header_row">
+        <property name="spacing">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Package Management</property>
+            <style>
+              <class name="title-1"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSearchEntry" id="search_entry">
+            <property name="hexpand">true</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="vexpand">true</property>
+        <child>
+          <object class="GtkColumnView" id="package_grid">
+            <child>
+              <object class="GtkColumnViewColumn">
+                <property name="title">Package Name</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColumnViewColumn">
+                <property name="title">Size</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColumnViewColumn">
+                <property name="title">Version</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

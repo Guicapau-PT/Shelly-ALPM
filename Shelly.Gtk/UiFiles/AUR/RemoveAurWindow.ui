@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkWindow" id="RemoveAurWindow">
+    <property name="title">Remove AUR Package</property>
+    <property name="modal">true</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Are you sure you want to remove this AUR package?</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="halign">end</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkButton" id="cancel_button">
+                <property name="label">Cancel</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="remove_button">
+                <property name="label">Remove</property>
+                <style>
+                  <class name="destructive-action"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
