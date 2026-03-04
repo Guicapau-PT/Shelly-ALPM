@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PublishAot>true</PublishAot>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PublishSingleFile>true</PublishSingleFile>
+        <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+        <InvariantGlobalization>true</InvariantGlobalization>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Version>0.0.1</Version>
+        <AssemblyName>shelly-gtk</AssemblyName>
+        <AssemblyVersion>0.0.1</AssemblyVersion>
+        <AssemblyTitle>Shelly GTK</AssemblyTitle>
+        <Description>Shelly GTK is a arch linux package manager</Description>
+        <Company>ZC Development</Company>
+        <Product>Shelly CLI by ZC Development</Product>
+        <Copyright>2026 ZC Development</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GirCore.Gtk-4.0" Version="0.7.0" />
+    </ItemGroup>
+</Project>

@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelly-Notifications", "Shelly-Notifications\Shelly-Notifications.csproj", "{74BF380B-BDAA-4C89-9785-CE9D226494FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelly.Gtk", "Shelly.Gtk\Shelly.Gtk.csproj", "{8B1ED959-DB1A-4283-AA09-DC933335CE84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,18 @@ Global
 		{74BF380B-BDAA-4C89-9785-CE9D226494FF}.Release|x64.Build.0 = Release|Any CPU
 		{74BF380B-BDAA-4C89-9785-CE9D226494FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{74BF380B-BDAA-4C89-9785-CE9D226494FF}.Release|x86.Build.0 = Release|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Debug|x64.Build.0 = Debug|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Debug|x86.Build.0 = Debug|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Release|x64.ActiveCfg = Release|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Release|x64.Build.0 = Release|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Release|x86.ActiveCfg = Release|Any CPU
+		{8B1ED959-DB1A-4283-AA09-DC933335CE84}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
