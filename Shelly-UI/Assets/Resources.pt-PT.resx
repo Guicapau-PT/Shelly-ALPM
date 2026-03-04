@@ -60,4 +60,166 @@
     <data name="ArchNews" xml:space="preserve">
         <value>Notícias do Arch</value>
     </data>
+    <data name="AreYouSure" xml:space="preserve">
+        <value>Tu tens Certeza?</value>
+    </data>
+    <data name="AurDisclaimer" xml:space="preserve">
+        <value>Pacotes do AUR são submetidos por usuários e não contam com apoio oficial. Use-os a seu próprio risco.</value>
+    </data>
+    <data name="AurInstallFailed" xml:space="preserve">
+        <value>Instalção de pacotes AUR falhou; {0}</value>
+    </data>
+    <data name="AurInstallSuccess" xml:space="preserve">
+        <value>Pacote(s) AUR {0} instalado(s) com sucesso</value>
+    </data>
+    <data name="AurWarning" xml:space="preserve">
+        <value>Aviso Sobre o AUR</value>
+    </data>
+    <data name="AuthenticateButton" xml:space="preserve">
+        <value>Autenticar</value>
+    </data>
+    <data name="AuthRequired" xml:space="preserve">
+        <value>Autenticação Necessária</value>
+    </data>
+    <data name="BuyMeACoffeeButton" xml:space="preserve">
+        <value>Apoia-nos com um café!</value>
+    </data>
+    <data name="Cancel" xml:space="preserve">
+        <value>Cancelar</value>
+    </data>
+    <data name="CheckForUpdate" xml:space="preserve">
+        <value>A buscar Atualização</value>
+    </data>
+    <data name="CheckForUpdates" xml:space="preserve">
+        <value>A buscar Atualizações</value>
+    </data>
+    <data name="CheckingForUpdates" xml:space="preserve">
+        <value>A Buscar Atualizações...</value>
+    </data>
+    <data name="CompletingRequestedActions" xml:space="preserve">
+        <value>A realizar ações solicitadas:</value>
+    </data>
+    <data name="Confirm" xml:space="preserve">
+        <value>Confirmar</value>
+    </data>
+    <data name="Continue" xml:space="preserve">
+        <value>Continuar</value>
+    </data>
+    <data name="CurrentVersion" xml:space="preserve">
+        <value>Versão</value>
+    </data>
+    <data name="DefaultContent" xml:space="preserve">
+        <value>Conteúdo por Padrão</value>
+    </data>
+    <data name="DefaultPageOnStartup" xml:space="preserve">
+        <value>Conteudo por Padrão ao Inicializar</value>
+    </data>
+    <data name="DescriptionMetaSearch" xml:space="preserve">
+        <value>Descrição</value>
+    </data>
+    <data name="EmptyPassword" xml:space="preserve">
+        <value>A senha não pode estar vazia.</value>
+    </data>
+    <data name="EnterPassword" xml:space="preserve">
+        <value>Por favor, digita a sua palavra-passe sudo:</value>
+    </data>
+    <data name="EnterPasswordLockout" xml:space="preserve">
+        <value>Digita a senha para continuar. Ela será lembrada apena durante esta sessão. Várias tentativas incorretas podem bloquear o acesso.</value>
+    </data>
+    <data name="ExportSyncFailedToast" xml:space="preserve">
+        <value>Falha na sincronização exportada</value>
+    </data>
+    <data name="ExportSyncFile" xml:space="preserve">
+        <value>Arquibo de exportação de sincronização</value>
+    </data>
+    <data name="ExportSyncLocation" xml:space="preserve">
+        <value>Escolha uma localização para salvar o ficheiro</value>
+    </data>
+    <data name="ExportSyncSuccessToast" xml:space="preserve">
+        <value>Fichero de sincronização exportado com sucesso </value>
+    </data>
+    <data name="FlatpakDependency" xml:space="preserve">
+        <value>Clica "Confirmar" para instalar agora ou instale manualmente</value>
+    </data>
+    <data name="FlatpakInstallationFailed" xml:space="preserve">
+        <value>Instalação de Flatpak falhou: {0}</value>
+    </data>
+    <data name="FlatpakInstallationSuccess" xml:space="preserve">
+        <value>{0} pacote(s) Flatpak instalado(s) com sucesso</value>
+    </data>
+    <data name="FlatpakWarning" xml:space="preserve">
+        <value>Ligar essa funcionalidade é preciso flatpak</value>
+    </data>
+    <data name="ForceSync" xml:space="preserve">
+        <value>Forçar atualizado do banco</value>
+    </data>
+    <data name="GenericPackageInstallFail" xml:space="preserve">
+        <value>Falha na instalação: {0}</value>
+    </data>
+    <data name="GenericPackageUpdateSuccess" xml:space="preserve">
+        <value>Pacotes {0} estão atualizados com sucesso</value>
+    </data>
+    <data name="Github" xml:space="preserve">
+        <value>Github</value>
+    </data>
+    <data name="Home" xml:space="preserve">
+        <value>Inicio </value>
+    </data>
+    <data name="IdMetaSearch" xml:space="preserve">
+        <value>ID</value>
+    </data>
+    <data name="Install" xml:space="preserve">
+        <value>Instalar</value>
+    </data>
+    <data name="InstallAur" xml:space="preserve">
+        <value>Instalar AUR</value>
+    </data>
+    <data name="InstallAurPackages" xml:space="preserve">
+        <value>Instalar Pacote(s) AUR</value>
+    </data>
+    <data name="Installed" xml:space="preserve">
+        <value>Instalado</value>
+    </data>
+    <data name="InstalledPackages" xml:space="preserve">
+        <value>Pacotes Instalados</value>
+    </data>
+    <data name="InstallFlatpak" xml:space="preserve">
+        <value>Instalar Flaptak</value>
+    </data>
+    <data name="InstallingFlatpak" xml:space="preserve">
+        <value>A Instalar Flatpak...</value>
+    </data>
+    <data name="InstallingLocalPackages" xml:space="preserve">
+        <value>A Instalar pacotes locais...</value>
+    </data>
+    <data name="InstallingSelectedPackages" xml:space="preserve">
+        <value>A Instalar pacotes selecionados...</value>
+    </data>
+    <data name="InstallingUpdate" xml:space="preserve">
+        <value>A instalar Atualização...</value>
+    </data>
+    <data name="InstallLocalPackages" xml:space="preserve">
+        <value>A Instalar Pacotes Locais</value>
+    </data>
+    <data name="InstallLocalPackagesTooltip" xml:space="preserve">
+        <value>A instalar um Ficheiro de pacote local (.xz .gz .zst)</value>
+    </data>
+    <data name="InstallPackages" xml:space="preserve">
+        <value>A Instalar Pacote(s)</value>
+    </data>
+    <data name="InstallSuccess" xml:space="preserve">
+        <value>Instalado com sucesso</value>
+    </data>
+    <data name="InvalidPassword" xml:space="preserve">
+        <value>Palavra-passe inválida. Por favor, tenta novamente.</value>
+    </data>
+    <data name="LabelDescription" xml:space="preserve">
+        <value>Descrição: {0}</value>
+    </data>
+    <data name="LabelFirstSubmitted" xml:space="preserve">
+        <value>Primeiro envio: {0}</value>
+    </data>
+    <data name="LabelInstallDate" xml:space="preserve">
+        <value>Data de instalação: {0}</value>
+    </data>
 </root>
