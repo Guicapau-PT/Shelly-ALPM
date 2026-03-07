@@ -223,4 +223,9 @@ public class PackageUpdate(IPrivilegedOperationService privilegedOperationServic
             }
         }
     }
+
+    public void Dispose()
+    {
+        
+    }
 }
