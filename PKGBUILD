@@ -25,8 +25,8 @@ depends=(
     'libxcursor'
 )
 optdepends=(
-    'flatpak'
-    'glib2'
+    'flatpak:  For supporting flatpak implementation.'
+    'glib2: Enables better skia compatibility'
 )
 makedepends=('dotnet-sdk-10.0')
 
@@ -63,6 +63,7 @@ package() {
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/shelly.desktop"
 [Desktop Entry]
 Name=Shelly
+Comment=A Modern Arch Package Manager
 Exec=/usr/bin/shelly-ui
 Icon=shelly
 Type=Application
