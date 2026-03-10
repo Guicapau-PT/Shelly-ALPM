@@ -266,4 +266,13 @@ public class AurUpdate(IPrivilegedOperationService privilegedOperationService, I
             }
         }
     }
+
+    public void Dispose()
+    {
+        _cts.Cancel();
+        _cts.Dispose();
+        _listStore.RemoveAll();
+        _packageGObjectRefs.Clear();
+        _checkBinding.Clear();
+    }
 }

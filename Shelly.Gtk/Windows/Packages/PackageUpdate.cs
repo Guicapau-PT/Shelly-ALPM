@@ -293,4 +293,11 @@ public class PackageUpdate(IPrivilegedOperationService privilegedOperationServic
             }
         }
     }
+
+    public void Dispose()
+    {
+        _listStore.RemoveAll();
+        _packageGObjectRefs.Clear();
+        _checkBinding.Clear();
+    }
 }

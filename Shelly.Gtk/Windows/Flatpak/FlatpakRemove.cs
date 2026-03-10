@@ -191,4 +191,12 @@ public class FlatpakRemove(IUnprivilegedOperationService unprivilegedOperationSe
             lockoutService.Hide();
         }
     }
+
+    public void Dispose()
+    {
+        _cts.Cancel();
+        _cts.Dispose();
+        _listStore?.RemoveAll();
+        _stringObjectRefs.Clear();
+    }
 }

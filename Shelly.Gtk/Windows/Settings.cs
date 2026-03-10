@@ -238,4 +238,8 @@ public class Settings(
             lockoutService.Hide();
         }
     }
+
+    public void Dispose()
+    {
+    }
 }

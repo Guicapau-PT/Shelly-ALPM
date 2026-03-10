@@ -112,7 +112,6 @@ sealed class Program
             };
 
             IShellyWindow? currentPage = null;
-            var previousPages = new List<IShellyWindow>();
 
             homeButton.OnClicked += (_, _) => NavigateTo<HomeWindow>();
             settingsButton.OnClicked += (_, _) => NavigateTo<Settings>();
@@ -225,9 +224,8 @@ sealed class Program
                     contentArea.Remove(child);
                 }
 
-                if (currentPage != null)
-                    previousPages.Add(currentPage);
-                currentPage = null!;
+                currentPage?.Dispose();
+                currentPage = null;
                 var page = serviceProvider.GetRequiredService<T>();
                 if (page is Settings settings)
                 {

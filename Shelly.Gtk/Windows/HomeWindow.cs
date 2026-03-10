@@ -435,4 +435,12 @@ public class HomeWindow(
             PubDate = item.Element("pubDate")?.Value ?? ""
         }).ToList();
     }
+
+    public void Dispose()
+    {
+        _cts.Cancel();
+        _cts.Dispose();
+        _store?.RemoveAll();
+        _packageGObjectRefs.Clear();
+    }
 }

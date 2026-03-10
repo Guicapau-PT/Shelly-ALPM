@@ -305,4 +305,11 @@ public class MetaSearch(
             lockoutService.Hide();
         }
     }
+
+    public void Dispose()
+    {
+        _listStore.RemoveAll();
+        _packageGObjectRefs.Clear();
+        _checkBinding.Clear();
+    }
 }
