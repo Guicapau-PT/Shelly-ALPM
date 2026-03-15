@@ -465,13 +465,13 @@ public class AurPackageManager(string? configPath = null)
                 continue;
             }
 
-                PackageProgress?.Invoke(this, new PackageProgressEventArgs
-                {
-                    PackageName = packageName,
-                    CurrentIndex = i + 1,
-                    TotalCount = totalCount,
-                    Status = PackageProgressStatus.Completed
-                });
+            PackageProgress?.Invoke(this, new PackageProgressEventArgs
+            {
+                PackageName = packageName,
+                CurrentIndex = i + 1,
+                TotalCount = totalCount,
+                Status = PackageProgressStatus.Completed
+            });
         }
     }
 
