@@ -60,6 +60,8 @@ public class FlatpakInstall(
     private Gio.ListStore? _remoteListStore;
     private SingleSelection? _remoteSelectionModel;
     private SignalListItemFactory? _remoteFactory;
+    
+    private Button _installFromFlatpakRef = null!;
 
     public Widget CreateWindow()
     {
@@ -96,10 +98,13 @@ public class FlatpakInstall(
         _addRemoteUrlEntry = (Entry)builder.GetObject("overlay_add_remote_url_entry")!;
         _addRemoteScopeDropDown = (DropDown)builder.GetObject("overlay_add_remote_scope_dropdown")!;
         _deleteRemoteButton = (Button)builder.GetObject("overlay_delete_remote_button")!;
+        _installFromFlatpakRef = (Button)builder.GetObject("install_from_flatpak_ref_button")!;
 
         _overlayInstallButton.OnClicked += (_, _) => { _ = InstallSelectedAsync(); };
         _remoteRefButton.OnClicked += (_, _) => { _ = BuildAndShowRemoteRef(builder); };
         _remoteRefBackButton.OnClicked += (_, _) => { _remoteRefOverlay.Hide(); };
+        _installFromFlatpakRef.OnClicked += (_, _) => { _ = InstallFromFlatpakRef(); };
+        
 
         _addRemoteButton.OnClicked += (_, _) =>
         {
@@ -513,6 +518,41 @@ public class FlatpakInstall(
             var gObj = new FlatpakGObject();
             gObj.Package = package;
             _listStore.Append(gObj);
+        }
+    }
+
+    private async Task InstallFromFlatpakRef()
+    {
+        try
+        {
+            //Prompt for file 
+            //If you need help with this check out InstallAppImage in PackageInstall
+            
+            UnprivilegedOperationResult result;
+            lockoutService.Show($"Installing selected ref...");
+            
+            //Call to new CLI command 
+            //flatpak install-ref-file <path> from above
+            
+            //Add to Interface and Non-interface
+            
+            /*if (!result.Success)
+            {
+                var args = new ToastMessageEventArgs(
+                    $"Installing Flatpak failed"
+                );
+                genericQuestionService.RaiseToastMessage(args);
+                Console.WriteLine($"Failed to install package {_selectedPackage.Id}: {result.Error}");
+            }*/
+        }
+        finally
+        {
+            lockoutService.Hide();
+
+            var args = new ToastMessageEventArgs(
+                $"Installed Flatpak"
+            );
+            genericQuestionService.RaiseToastMessage(args);
         }
     }
 
