@@ -106,11 +106,6 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
         {
             AddIgnorePkg(_handle,ignorePkg);
         }
-
-        foreach (var holdPkg in _config.HoldPkg)
-        {
-            AddHoldPkg(_handle,holdPkg);
-        }
         
         if (!string.IsNullOrEmpty(_config.GpgDir) && root)
         {
@@ -1044,6 +1039,30 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
     public void RemovePackages(List<string> packageNames,
         AlpmTransFlag flags = AlpmTransFlag.None)
     {
+
+        var heldPackagesBeingRemove = packageNames.Intersect(_config.HoldPkg).ToList();
+        if (heldPackagesBeingRemove.Count > 0)
+        {
+            var args = new AlpmQuestionEventArgs(
+                AlpmQuestionType.RemovePkgs,
+                $"Are you sure you want to remove the following package held pkg: {string.Join(", ", heldPackagesBeingRemove)}",
+                null,
+                null);
+            
+            args.Response = 0;
+
+            Question?.Invoke(this, args);
+
+            // Block until the GUI user responds
+            args.WaitForResponse();
+            
+            if (args.Response == 0)
+            {
+                Console.Error.WriteLine("[ALPM_ERROR] Held Package removal cancelled.");
+                return;
+            }
+        }
+        
         if (_handle == IntPtr.Zero) Initialize();
 
         List<IntPtr> pkgPtrs = new List<IntPtr>();
