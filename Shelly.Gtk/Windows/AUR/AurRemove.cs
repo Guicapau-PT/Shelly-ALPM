@@ -257,7 +257,7 @@ public class AurRemove(
                 else
                 {
                     var args = new ToastMessageEventArgs(
-                        $"Updated {selectedPackages.Count} Package(s)"
+                        $"Removed {selectedPackages.Count} Package(s)"
                     );
                     genericQuestionService.RaiseToastMessage(args);
                 }
