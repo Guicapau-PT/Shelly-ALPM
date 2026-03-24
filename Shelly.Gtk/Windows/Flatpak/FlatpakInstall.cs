@@ -78,7 +78,7 @@ public class FlatpakInstall(
 
         _gridView = (GridView)builder.GetObject("list_flatpaks")!;
         _gridView.SetMaxColumns(4);
-        _gridView.SetMinColumns(4);
+        _gridView.SetMinColumns(1);
         
         var reloadButton = (Button)builder.GetObject("reload_button")!;
         var searchEntry = (SearchEntry)builder.GetObject("search_entry")!;
@@ -553,10 +553,8 @@ public class FlatpakInstall(
         {
             lockoutService.Show("Loading available Flatpak packages...", 0, false);
 
-            _ = Task.Run(async () =>
-            {
-                await unprivilegedOperationService.FlatpakSyncRemoteAppstream();
-            }, ct);
+            var syncTask = unprivilegedOperationService.FlatpakSyncRemoteAppstream();
+            await Task.WhenAny(syncTask, Task.Delay(TimeSpan.FromSeconds(5), ct));
             
             ct.ThrowIfCancellationRequested();
             _allPackages = await unprivilegedOperationService.ListAppstreamFlatpak();
