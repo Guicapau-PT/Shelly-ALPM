@@ -1216,9 +1216,25 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
             var downloadTasks = updates.Select(pkg => Task.Run(() =>
             {
                 var url = BuildPackageUrl(pkg);
-                var localPath = Path.Combine(_config.CacheDir, url.Split('/').Last());
+                var fileName = url.Split('/').Last();
+                var localPath = Path.Combine(_config.CacheDir, fileName);
                 if (!File.Exists(localPath))
+                {
+                    Progress?.Invoke(this, new AlpmProgressEventArgs(
+                        AlpmProgressType.PackageDownload,
+                        fileName,
+                        0, 0, 0
+                    ));
                     PerformDownload(url, localPath);
+                }
+                else
+                {
+                    Progress?.Invoke(this, new AlpmProgressEventArgs(
+                        AlpmProgressType.PackageDownload,
+                        fileName,
+                        100, 0, 0
+                    ));
+                }
             }));
             await Task.WhenAll(downloadTasks);
             if (TransInit(_handle, flags) != 0)
