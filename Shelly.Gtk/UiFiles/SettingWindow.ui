@@ -284,6 +284,11 @@
               </object>
             </child>
             <child>
+              <object class="GtkButton" id="changelog_button">
+                <property name="label">View Changelog</property>
+              </object>
+            </child>
+            <child>
               <object class="GtkLinkButton" id="github_link">
                 <property name="label">GitHub</property>
                 <property name="uri">https://github.com/ZoeyErinBauer/Shelly-ALPM</property>
@@ -293,12 +298,6 @@
               <object class="GtkLinkButton" id="sponsor_link">
                 <property name="label">Sponsor</property>
                 <property name="uri">https://buymeacoffee.com/zoeyerinba3</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLinkButton" id="changelog_button">
-                <property name="label">View Changelog</property>
-                <property name="uri">about:blank</property>
               </object>
             </child>
           </object>
