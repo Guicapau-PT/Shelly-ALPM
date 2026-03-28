@@ -172,6 +172,10 @@ public class RemoveCommand : Command<RemovePackageSettings>
             {
                 flags |= AlpmTransFlag.Cascade;
             }
+            manager.HookRun += (sender, args) =>
+            {
+                Console.Error.WriteLine($"[ALPM_HOOK]{args.Description}");
+            };
             manager.RemovePackages(packageList,flags);
             if (settings.RemoveConfig)
             {

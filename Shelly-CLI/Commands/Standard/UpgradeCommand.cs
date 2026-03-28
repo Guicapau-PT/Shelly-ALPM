@@ -206,6 +206,11 @@ public class UpgradeCommand : AsyncCommand<UpgradeSettings>
             }
         };
 
+        manager.HookRun += (sender, args) =>
+        {
+            Console.Error.WriteLine($"[ALPM_HOOK]{args.Description}");
+        };
+
         await manager.SyncSystemUpdate();
         manager.Dispose();
         if (settings.Aur || settings.All)

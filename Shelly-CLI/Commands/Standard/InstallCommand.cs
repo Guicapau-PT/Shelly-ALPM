@@ -197,6 +197,10 @@ public class InstallCommand : Command<InstallPackageSettings>
         Console.WriteLine("Installing packages...");
         var rowIndex = new Dictionary<string, int>();
         manager.Progress += (sender, args) => { Console.WriteLine($"{args.PackageName}: {args.Percent}%"); };
+        manager.HookRun += (sender, args) =>
+        {
+            Console.Error.WriteLine($"[ALPM_HOOK]{args.Description}");
+        };
         try
         {
             manager.InstallPackages(settings.Packages.ToList());

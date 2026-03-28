@@ -802,6 +802,11 @@ public class PrivilegedOperationService : IPrivilegedOperationService
                             Console.Error.WriteLine(e.Data);
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Console.Error.WriteLine($"Error processing stderr: {ex.Message}");
+                        errorBuilder.AppendLine(e.Data);
+                    }
                     finally
                     {
                         if (Interlocked.Decrement(ref pendingCallbacks) == 0)
