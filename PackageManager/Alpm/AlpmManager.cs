@@ -1055,7 +1055,7 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
         return Task.CompletedTask;
     }
 
-    public void RemovePackages(List<string> packageNames,
+    public Task RemovePackages(List<string> packageNames,
         AlpmTransFlag flags = AlpmTransFlag.None)
     {
         var heldPackagesBeingRemove = packageNames.Intersect(_config.HoldPkg).ToList();
@@ -1077,7 +1077,7 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
             if (args.Response == 0)
             {
                 Console.Error.WriteLine("[ALPM_ERROR] Held Package removal cancelled.");
-                return;
+                return Task.CompletedTask;
             }
         }
 
@@ -1100,7 +1100,7 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
             pkgPtrs.Add(pkgPtr);
         }
 
-        if (pkgPtrs.Count == 0) return;
+        if (pkgPtrs.Count == 0) return Task.CompletedTask;
 
         // If we are doing a DbOnly install, we should also skip dependency checks, 
         // extraction, and signature/checksum validation to avoid requirement for the physical package file.
@@ -1154,6 +1154,8 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
             // Release transaction
             TransRelease(_handle);
         }
+
+        return Task.CompletedTask;
     }
 
     public void RemovePackage(string packageName,
@@ -1361,6 +1363,7 @@ public class AlpmManager(string configPath = "/etc/pacman.conf") : IDisposable, 
             TransRelease(_handle);
             Refresh();
         }
+
         return Task.CompletedTask;
     }
 

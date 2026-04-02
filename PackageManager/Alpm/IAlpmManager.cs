@@ -28,7 +28,7 @@ public interface IAlpmManager
     Task InstallPackages(List<string> packageNames,
         AlpmTransFlag flags = AlpmTransFlag.None);
 
-    void RemovePackages(List<string> packageNames,
+    Task RemovePackages(List<string> packageNames,
         AlpmTransFlag flags = AlpmTransFlag.None);
 
     void RemovePackage(string packageName, AlpmTransFlag flags = AlpmTransFlag.None);
