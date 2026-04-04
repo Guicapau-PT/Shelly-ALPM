@@ -43,13 +43,13 @@ public static class QuestionHandler
                 question.SetResponse((int)((1L << 31) - 1));
             }
 
-            Console.Error.WriteLine($"[ALPM_SELECT_PROVIDER]{question.DependencyName}");
+            Console.Error.WriteLine($"[ALPM_SELECT_OPTDEPS]{question.DependencyName}");
             for (var i = 0; i < question.ProviderOptions.Count; i++)
             {
-                Console.Error.WriteLine($"[ALPM_PROVIDER_OPTION]{i}:{question.ProviderOptions[i]}");
+                Console.Error.WriteLine($"[ALPM_OPTDEPS_OPTION]{i}:{question.ProviderOptions[i]}");
             }
 
-            Console.Error.WriteLine("[ALPM_PROVIDER_END]");
+            Console.Error.WriteLine("[ALPM_OPTDEPS_END]");
             Console.Error.Flush();
             
             var input = Console.ReadLine();
