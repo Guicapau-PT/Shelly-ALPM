@@ -33,7 +33,7 @@ public class PackageInstall(
     private List<string> _groups = [];
     private StringList _groupsStringList = null!;
     private string _selectedGroup = "Any";
-
+    private HashSet<string> _installedPackageNames = [];
     private Dictionary<ColumnViewCell, (SignalHandler<CheckButton> OnToggled, EventHandler OnExternalToggle)>
         _checkBinding =
             [];
@@ -217,6 +217,7 @@ public class PackageInstall(
         {
             iconImage.SetFromIconName("package-x-generic");
         }
+
         headerBox.Append(iconImage);
 
         var nameLabel = Label.New(pkg.Name);
@@ -323,12 +324,17 @@ public class PackageInstall(
                 RowSpacing = 6,
                 Halign = Align.Start,
                 Valign = Align.Start,
-                MaxChildrenPerLine = isOptional ? 1u : 10u, 
+                MaxChildrenPerLine = isOptional ? 1u : 10u,
                 MinChildrenPerLine = 1
             };
 
             foreach (var item in items)
             {
+                var chipBox = Box.New(Orientation.Horizontal, 4);
+                
+                var packageName = item.Split(new[] { '>', '<', '=', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                    .FirstOrDefault();
+
                 var chip = Label.New(item);
                 chip.AddCssClass("package-chip");
                 chip.Selectable = true;
@@ -341,7 +347,21 @@ public class PackageInstall(
                     chip.WrapMode = Pango.WrapMode.WordChar;
                     chip.Xalign = 0;
                 }
-                flowBox.Append(chip);
+
+                chipBox.Append(chip);
+                
+                if (isOptional && !string.IsNullOrEmpty(packageName) && _installedPackageNames.Contains(packageName))
+                {
+                    var installedIcon = Image.NewFromIconName("object-select-symbolic");
+                    installedIcon.PixelSize = 16;
+                    installedIcon.AddCssClass("success");
+                    installedIcon.TooltipText = "Installed";
+                    installedIcon.Halign = Align.End;
+                    installedIcon.Valign = Align.Center;
+                    chipBox.Append(installedIcon);
+                }
+
+                flowBox.Append(chipBox);
             }
 
             expander.SetChild(flowBox);
@@ -500,62 +520,62 @@ public class PackageInstall(
         repositoryColumn.SetFactory(_repositoryFactory);
     }
 
-    private async Task LoadDataAsync(CancellationToken ct = default)
+ private async Task LoadDataAsync(CancellationToken ct = default)
+{
+    GLib.Functions.IdleAdd(0, () =>
     {
+        _listStore.RemoveAll();
+        _packageGObjectRefs.Clear();
+        _detailRevealer.SetRevealChild(false);
+        _currentDetailPkg = null;
+        return false;
+    });
+
+    try
+    {
+        _packages = await privilegedOperationService.GetAvailablePackagesAsync(_showHiddenCheck.Active);
+        _groups = _packages.SelectMany(x => x.Groups).Distinct().ToList();
+        _groups.Insert(0, "Any");
+
+        ct.ThrowIfCancellationRequested();
+        var installedPackages = await privilegedOperationService.GetInstalledPackagesAsync();
+        
+        _installedPackageNames = new HashSet<string>(installedPackages?.Select(x => x.Name) ?? []);
+        
+        var queue = new Queue<AlpmPackageDto>(_packages);
+
         GLib.Functions.IdleAdd(0, () =>
         {
-            _listStore.RemoveAll();
-            _packageGObjectRefs.Clear();
-            _detailRevealer.SetRevealChild(false);
-            _currentDetailPkg = null;
-            return false;
-        });
+            _groupsStringList = StringList.New(_groups.ToArray());
+            _groupDropDown.SetModel(_groupsStringList);
 
-        try
-        {
-            _packages = await privilegedOperationService.GetAvailablePackagesAsync(_showHiddenCheck.Active);
-            _groups = _packages.SelectMany(x => x.Groups).Distinct().ToList();
-            _groups.Insert(0, "Any");
+            if (ct.IsCancellationRequested) return false;
 
-            ct.ThrowIfCancellationRequested();
-            var installedPackages = await privilegedOperationService.GetInstalledPackagesAsync();
-            var installedNames = new HashSet<string>(installedPackages?.Select(x => x.Name) ?? []);
-            var queue = new Queue<AlpmPackageDto>(_packages);
-
-            GLib.Functions.IdleAdd(0, () =>
+            const int batchSize = 1000;
+            var count = 0;
+            var batch = new List<AlpmPackageGObject>();
+            while (queue.Count > 0 && count < batchSize)
             {
-                _groupsStringList = StringList.New(_groups.ToArray());
-                _groupDropDown.SetModel(_groupsStringList);
+                var dequeued = queue.Dequeue();
+                var pkgObj = new AlpmPackageGObject()
+                    { Package = dequeued, IsInstalled = _installedPackageNames.Contains(dequeued.Name) };
+                _packageGObjectRefs.Add(pkgObj);
+                batch.Add(pkgObj);
+                count++;
+            }
+            _listStore.Splice(_listStore.GetNItems(), 0, batch.ToArray(), (uint)batch.Count);
 
-                if (ct.IsCancellationRequested) return false;
-
-                const int batchSize = 1000;
-                var count = 0;
-                var batch = new List<AlpmPackageGObject>();
-                while (queue.Count > 0 && count < batchSize)
-                {
-                    var dequeued = queue.Dequeue();
-                    var pkgObj = new AlpmPackageGObject()
-                        { Package = dequeued, IsInstalled = installedNames.Contains(dequeued.Name) };
-                    _packageGObjectRefs.Add(pkgObj);
-                    batch.Add(pkgObj);
-                    count++;
-                }
-
-                // ReSharper disable once CoVariantArrayConversion
-                _listStore.Splice(_listStore.GetNItems(), 0, batch.ToArray(), (uint)batch.Count);
-
-                return queue.Count > 0;
-            });
-        }
-        catch (OperationCanceledException)
-        {
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Failed to load packages: {e.Message}");
-        }
+            return queue.Count > 0;
+        });
     }
+    catch (OperationCanceledException)
+    {
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Failed to load packages: {e.Message}");
+    }
+}
 
     private void ApplyFilter()
     {
